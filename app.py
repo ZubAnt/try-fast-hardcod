@@ -10,7 +10,7 @@ def pushbutton():
     s.send(b'GET / HTTP/1.1\r\n\r\n')
     data = b''
     while True:
-        r = s.recv(2)
+        r = s.recv(1024)
         if not r:
             break
         data += r
