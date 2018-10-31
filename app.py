@@ -1,3 +1,4 @@
+import logging
 from tkinter import *
 import socket
 
@@ -15,7 +16,7 @@ def pushbutton():
             break
         data += r
 
-    print(data)
+    logging.info(f'[data] size: {len(data)}')
     s.close()
 
 
