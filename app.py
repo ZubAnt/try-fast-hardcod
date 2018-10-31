@@ -2,6 +2,18 @@ import logging
 from tkinter import *
 import socket
 
+logging.getLogger().setLevel(logging.DEBUG)
+
+FILENAME = 'data'
+
+
+class FileStorage:
+
+    @classmethod
+    def create_from_binary_data(cls, filename, data):
+        with open(filename, 'wb') as file:
+            file.write(data)
+
 
 def pushbutton():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -18,6 +30,10 @@ def pushbutton():
 
     logging.info(f'[data] size: {len(data)}')
     s.close()
+
+    FileStorage.create_from_binary_data(FILENAME, data)
+
+
 
 
 root = Tk()
