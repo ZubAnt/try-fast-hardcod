@@ -8,7 +8,13 @@ def pushbutton():
     port = 80
     s.connect((host, port))
     s.send(b'GET / HTTP/1.1\r\n\r\n')
-    data = s.recv(1024)
+    data = b''
+    while True:
+        r = s.recv(2)
+        if not r:
+            break
+        data += r
+
     print(data)
     s.close()
 
